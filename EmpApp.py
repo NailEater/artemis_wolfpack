@@ -66,15 +66,16 @@ def ShowEmp():
         cursor.execute(get_sql, (getemp_id))
         db_conn.commit()
 		
-		for i in cursor:
-			getemp_id = i[0]
-			first_name = i[1]
-			last_name = i[2]
-			pri_skill = i[3]
-			location = i[4]
+	for i in cursor:
+		getemp_id = i[0]
+		first_name = i[1]
+		last_name = i[2]
+		pri_skill = i[3]
+		location = i[4]
 
     finally:
         cursor.close()
+		
     return render_template('GetEmpOutput.html', id=getemp_id, fname=first_name, lname=last_name, skill=pri_skill, location=location)
 
 if __name__ == '__main__':
