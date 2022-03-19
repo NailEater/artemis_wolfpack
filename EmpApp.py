@@ -62,19 +62,17 @@ def ShowEmp():
     get_sql = "SELECT * FROM employee WHERE emp_id = %s"
     cursor = db_conn.cursor()
 
-    try:
-        cursor.execute(get_sql, (getemp_id))
-        db_conn.commit() 
+    cursor.execute(get_sql, (getemp_id))
+    db_conn.commit() 
     
     for i in cursor:   
-    getemp_id = i[0] 
-    first_name = i[1] 
-    last_name = i[2] 
-    pri_skill = i[3]
-    location = i[4]
+        getemp_id = i[0] 
+        first_name = i[1] 
+        last_name = i[2] 
+        pri_skill = i[3]
+        location = i[4]
 
-    finally:
-        cursor.close()
+    cursor.close()
     
     return render_template('GetEmpOutput.html', id=getemp_id, fname=first_name, lname=last_name, skill=pri_skill, location=location)
 
