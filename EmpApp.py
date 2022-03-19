@@ -66,7 +66,6 @@ def ShowEmp():
         cursor.execute(get_sql, (getemp_id))
         db_conn.commit()
 		
-		print("Fetching data from Database")
 		for i in cursor:
 			getemp_id = i[0]
 			first_name = i[1]
