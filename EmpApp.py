@@ -66,12 +66,12 @@ def ShowEmp():
         cursor.execute(get_sql, (getemp_id))
         db_conn.commit()
 		
-	for i in cursor:
-		getemp_id = i[0]
-		first_name = i[1]
-		last_name = i[2]
-		pri_skill = i[3]
-		location = i[4]
+	for i in cursor:   
+	getemp_id = i[0] 
+	first_name = i[1] 
+	last_name = i[2] 
+	pri_skill = i[3]
+	location = i[4]
 
     finally:
         cursor.close()
