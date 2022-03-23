@@ -84,17 +84,11 @@ def EditEmp():
     pri_skill = request.form['pri_skill']
     location = request.form['location']
 
-    update_sql = "UPDATE employee SET emp_id= ? , first_name= ? , last_name= ? , pri_skill= ? , location= ? WHERE emp_id= ?"
+    update_sql = "UPDATE employee SET emp_id= %s , first_name= %s , last_name= %s , pri_skill= %s , location= %s WHERE emp_id= %s"
     cursor = db_conn.cursor()
-
-    try:
-
-        cursor.execute(update_sql, (emp_id, first_name, last_name, pri_skill, location, emp_id))
-        db_conn.commit()
-
-    finally:
-        cursor.close()
-
+    cursor.execute(update_sql, (emp_id, first_name, last_name, pri_skill, location, emp_id))
+    db_conn.commit()
+    cursor.close()
     return render_template('Home.html')
 
 @app.route("/fetchdata", methods=['POST'])
@@ -113,8 +107,18 @@ def ShowEmp():
         location = i[4]
 
     cursor.close()
-
     return render_template('GetEmpOutput.html', id=getemp_id, fname=first_name, lname=last_name, skill=pri_skill, location=location)
+
+@app.route("/delete", methods=['POST'])
+def DelEmp():
+    emp_id = request.form['emp_id']
+
+    del_sql = "DELETE FROM employee WHERE emp_id = %s"
+    cursor = db_conn.cursor()
+    cursor.execute(del_sql, (emp_id))
+    db_conn.commit()
+    cursor.close()
+    return render_template('Home.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
