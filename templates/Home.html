@@ -39,14 +39,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Views</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Geo</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  News</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  General</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Staff Record</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Attendance</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Log Out</a>
   </div>
 </nav>
 
@@ -64,101 +59,44 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
   <div class="w3-row-padding w3-margin-bottom">
     <div class="w3-quarter">
-      <div class="w3-container w3-teal w3-padding-16">
-        <div class="w3-left"><i class="fa fa-share-alt w3-xxxlarge"></i></div>
-        <div class="w3-right">
-          <h3>23</h3>
-        </div>
-        <div class="w3-clear"></div>
-        <h4>Shares</h4>
-      </div>
-    </div>
-    <div class="w3-quarter">
-      <div class="w3-container w3-orange w3-text-white w3-padding-16">
+      <div class="w3-container w3-grey w3-text-white w3-padding-16">
         <div class="w3-left"><i class="fa fa-users w3-xxxlarge"></i></div>
         <div class="w3-right">
           <h3>50</h3>
         </div>
         <div class="w3-clear"></div>
-        <h4>Users</h4>
+        <h4>No. Of Employees</h4>
       </div>
     </div>
   </div>
-
-  <div class="w3-container">
-    <h5>Countries</h5>
-    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable w3-white">
-      <tr>
-        <td>United States</td>
-        <td>65%</td>
-      </tr>
-      <tr>
-        <td>UK</td>
-        <td>15.7%</td>
-      </tr>
-      <tr>
-        <td>Russia</td>
-        <td>5.6%</td>
-      </tr>
-      <tr>
-        <td>Spain</td>
-        <td>2.1%</td>
-      </tr>
-      <tr>
-        <td>India</td>
-        <td>1.9%</td>
-      </tr>
-      <tr>
-        <td>France</td>
-        <td>1.5%</td>
-      </tr>
-    </table><br>
-    <button class="w3-button w3-dark-grey">More Countries  <i class="fa fa-arrow-right"></i></button>
-  </div>
   <hr>
+	
   <div class="w3-container">
-    <h5>Recent Users</h5>
+    <h5>Staff Information</h5>
     <ul class="w3-ul w3-card-4 w3-white">
       <li class="w3-padding-16">
-        <img src="/w3images/avatar2.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-        <span class="w3-xlarge">Mike</span><br>
+        <form action="/findPage" autocomplete="on" method="POST">
+		<button class="w3-button w3-dark-grey" type="submit">Search Record <i class="fa fa-arrow-right"></i></button><br><br>
+	</form>
       </li>
       <li class="w3-padding-16">
-        <img src="/w3images/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-        <span class="w3-xlarge">Jill</span><br>
+        <form action="/addPage" autocomplete="on" method="POST">
+		<button class="w3-button w3-dark-grey" type="submit">Add Record <i class="fa fa-arrow-right"></i></button><br><br>
+	</form>
       </li>
       <li class="w3-padding-16">
-        <img src="/w3images/avatar6.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
-        <span class="w3-xlarge">Jane</span><br>
+        <h2 style="color: grey">Enter Employee ID</h2>
+		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
+		<button class="w3-button w3-dark-grey" type="submit">Edit Record <i class="fa fa-arrow-right"></i></button><br><br>
+      </li>
+      <li class="w3-padding-16">
+        <h2 style="color: grey">Enter Employee ID</h2>
+		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
+		<button class="w3-button w3-dark-grey" type="submit">Delete Record <i class="fa fa-arrow-right"></i></button><br><br>
       </li>
     </ul>
   </div>
   <hr>
-
-  <div class="w3-container">
-    <h5>Recent Comments</h5>
-    <div class="w3-row">
-     	<form action="/findPage" autocomplete="on" method="POST">
-		<button class="w3-button w3-dark-grey" type="submit">Search Record<i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-			
-	<form action="/addPage" autocomplete="on" method="POST">
-		<button class="w3-button w3-dark-grey" type="submit">Add Record<i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-			
-	<form action="/editPage" autocomplete="on" method="POST">
-                <h2 style="color: grey">Enter Employee ID</h2>
-		Employee ID:<br> <input style="height:25px;font-size:14pt;" type="number" name="emp_id" autofocus size="40"><br><br>
-		<button class="w3-button w3-dark-grey" type="submit">Edit Record<i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-			
-	<form action="/delete" autocomplete="on" method="POST">
-		<h2 style="color: grey">Enter Employee ID</h2>
-		Employee ID:<br> <input style="height:25px;font-size:14pt;" type="number" name="emp_id" autofocus size="40"><br><br>
-		<button class="w3-button w3-dark-grey" type="submit">Delete Record<i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-    </div>
-  </div>
 	
   <br>
   <!-- End page content -->
