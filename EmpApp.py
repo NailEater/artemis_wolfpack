@@ -73,8 +73,7 @@ def AddEmp():
     finally:
         cursor.close()
 
-    print("all modification done...")
-    return render_template('EmpList.html', name=emp_name)
+    return render_template('Home.html')
 
 @app.route("/editemp", methods=['POST'])
 def EditEmp():
