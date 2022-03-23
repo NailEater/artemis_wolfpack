@@ -76,6 +76,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
     <ul class="w3-ul w3-card-4 w3-white">
       <li class="w3-padding-16">
         <form action="/findPage" autocomplete="on" method="POST">
+		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
 		<button class="w3-button w3-dark-grey" type="submit">Search Record <i class="fa fa-arrow-right"></i></button><br><br>
 	</form>
       </li>
@@ -85,14 +86,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</form>
       </li>
       <li class="w3-padding-16">
-        <h2 style="color: grey">Enter Employee ID</h2>
+	<form action="/editPage" autocomplete="on" method="POST">
+        	<h2 style="color: grey">Enter Employee ID</h2>
 		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
 		<button class="w3-button w3-dark-grey" type="submit">Edit Record <i class="fa fa-arrow-right"></i></button><br><br>
+	</form>
       </li>
       <li class="w3-padding-16">
-        <h2 style="color: grey">Enter Employee ID</h2>
+	<form action="/delete" autocomplete="on" method="POST">
+        	<h2 style="color: grey">Enter Employee ID</h2>
 		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
 		<button class="w3-button w3-dark-grey" type="submit">Delete Record <i class="fa fa-arrow-right"></i></button><br><br>
+	</form>
       </li>
     </ul>
   </div>
