@@ -73,33 +73,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	
   <div class="w3-container">
     <h5>Staff Information</h5>
-    <ul class="w3-ul w3-card-4 w3-white">
-      <li class="w3-padding-16">
-        <form action="/fetchdata" autocomplete="on" method="POST">
-		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
-		<button class="w3-button w3-dark-grey" type="submit">Search Record <i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-      </li>
-      <li class="w3-padding-16">
-        <form action="/addPage" autocomplete="on" method="POST">
-		<button class="w3-button w3-dark-grey" type="submit">Add Record <i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-      </li>
-      <li class="w3-padding-16">
-	<form action="/editPage" autocomplete="on" method="POST">
-        	<h2 style="color: grey">Enter Employee ID</h2>
-		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
-		<button class="w3-button w3-dark-grey" type="submit">Edit Record <i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-      </li>
-      <li class="w3-padding-16">
-	<form action="/delete" autocomplete="on" method="POST">
-        	<h2 style="color: grey">Enter Employee ID</h2>
-		Employee ID:<br> <input class="w3-input w3-border" type="number" name="emp_id" autofocus size="40"><br><br>
-		<button class="w3-button w3-dark-grey" type="submit">Delete Record <i class="fa fa-arrow-right"></i></button><br><br>
-	</form>
-      </li>
-    </ul>
+   	<div>
+		<h5>Employee ID</h5><br> <p class="w3-text-grey">{{ id }} </p><br><br>
+		<h5>First Name</h5><br> <p class="w3-text-grey">{{ fname }} </p><br><br>
+		<h5>Last Name</h5><br> <p class="w3-text-grey">{{ lname }} </p><br><br>
+		<h5>Primary Interest</h5><br> <p class="w3-text-grey">{{ skill }} </p><br><br>
+		<h5>Location</h5><br> <p class="w3-text-grey">{{ location }} </p><br><br>
+	</div>
   </div>
   <hr>
 	
@@ -133,41 +113,4 @@ function w3_close() {
 </script>
 
 </body>	
-</html>
-
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Employee Information</title>
-</head>
-<center>
-	<font color="black" size="5" style="font-family: avenir">
-
-		<h1 style="color: DodgerBlue">Employee Information</h1>
-
-		<body bgcolor="lightgrey">
-
-			<form>
-
-				<div>
-
-			  		<h5>Employee ID</h5><br> <p class="w3-text-grey">{{ id }} </p><br><br>
-
-			  		<h5>First Name</h5><br> <p class="w3-text-grey">{{ fname }} </p><br><br>
-
-			  		<h5>Last Name</h5><br> <p class="w3-text-grey">{{ lname }} </p><br><br>
-
-			  		<h5>Primary Interest</h5><br> <p class="w3-text-grey">{{ skill }} </p><br><br>
-
-			  		<h5>Location</h5><br> <p class="w3-text-grey">{{ location }} </p><br><br>
-
-			  	</div>
-
-			</form>
-
-		</body>
-
-	</font>
-</center>
 </html>
