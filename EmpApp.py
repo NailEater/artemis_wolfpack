@@ -51,7 +51,7 @@ def edit():
 
     cursor.close()
 
-    return render_template('EditEmp.html', id=getemp_id, fname=first_name, lname=last_name, skill=pri_skill, location=location)
+    return render_template('EditEmp.html', eid=getemp_id, fname=first_name, lname=last_name, skill=pri_skill, location=location)
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
