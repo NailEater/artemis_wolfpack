@@ -36,14 +36,14 @@ def add():
 
 @app.route("/editPage", methods=['POST'])
 def edit():
-    getemp_id = request.form['emp_id']
+    emp_id = request.form['emp_id']
     get_sql = "SELECT * FROM employee WHERE emp_id = %s"
     cursor = db_conn.cursor()
 
-    cursor.execute(get_sql, (getemp_id))
+    cursor.execute(get_sql, (emp_id))
     db_conn.commit()
     for i in cursor:
-        getemp_id = i[0]
+        emp_id = i[0]
         emp_username = i[1]
         emp_name = i[2]
         gender = i[3]
@@ -53,7 +53,7 @@ def edit():
 
     cursor.close()
 
-    return render_template('EditEmp.html', getemp_id=getemp_id, emp_username=emp_username, emp_name=emp_name, gender=gender, contact_num=contact_num, emp_email=emp_email, emp_password=emp_password)
+    return render_template('EditEmp.html', emp_id=emp_id, emp_username=emp_username, emp_name=emp_name, gender=gender, contact_num=contact_num, emp_email=emp_email, emp_password=emp_password)
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
@@ -97,14 +97,14 @@ def EditEmp():
 
 @app.route("/fetchdata", methods=['POST'])
 def ShowEmp():
-    getemp_id = request.form['emp_id']
+    emp_id = request.form['emp_id']
     get_sql = "SELECT * FROM employee WHERE emp_id = %s"
     cursor = db_conn.cursor()
 
-    cursor.execute(get_sql, (getemp_id))
+    cursor.execute(get_sql, (emp_id))
     db_conn.commit()
     for i in cursor:
-        getemp_id = i[0]
+        emp_id = i[0]
         emp_username = i[1]
         emp_name = i[2]
         gender = i[3]
@@ -113,7 +113,7 @@ def ShowEmp():
         emp_password = i[4]
 
     cursor.close()
-    return render_template('GetEmpOutput.html', getemp_id=getemp_id, emp_username=emp_username, emp_name=emp_name, gender=gender, contact_num=contact_num, emp_email=emp_email, emp_password=emp_password)
+    return render_template('GetEmpOutput.html', emp_id=emp_id, emp_username=emp_username, emp_name=emp_name, gender=gender, contact_num=contact_num, emp_email=emp_email, emp_password=emp_password)
 
 @app.route("/delete", methods=['POST'])
 def DelEmp():
