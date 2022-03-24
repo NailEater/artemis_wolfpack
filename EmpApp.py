@@ -44,31 +44,34 @@ def edit():
     db_conn.commit()
     for i in cursor:
         getemp_id = i[0]
-        first_name = i[1]
-        last_name = i[2]
-        pri_skill = i[3]
-        location = i[4]
+        emp_username = i[1]
+        emp_name = i[2]
+        gender = i[3]
+        contact_num = i[4]
+        emp_email = i[4]
+        emp_password = i[4]
 
     cursor.close()
 
-    return render_template('EditEmp.html', eid=getemp_id, fname=first_name, lname=last_name, skill=pri_skill, location=location)
+    return render_template('EditEmp.html', getemp_id=getemp_id, emp_username=emp_username, emp_name=emp_name, gender=gender, contact_num=contact_num, emp_email=emp_email, emp_password=emp_password)
 
 @app.route("/addemp", methods=['POST'])
 def AddEmp():
     emp_id = request.form['emp_id']
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
-    pri_skill = request.form['pri_skill']
-    location = request.form['location']
+    emp_username = request.form['emp_username']
+    emp_name = request.form['emp_name']
+    gender = request.form['gender']
+    contact_num = request.form['contact_num']
+    emp_email = request.form['emp_email']
+    emp_password = request.form['emp_password']
 
-    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s)"
+    insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
 
     try:
 
-        cursor.execute(insert_sql, (emp_id, first_name, last_name, pri_skill, location))
+        cursor.execute(insert_sql, (emp_id, emp_username, emp_name, gender, contact_num, emp_email, emp_password))
         db_conn.commit()
-        emp_name = "" + first_name + " " + last_name
 
     finally:
         cursor.close()
@@ -78,14 +81,16 @@ def AddEmp():
 @app.route("/editemp", methods=['POST'])
 def EditEmp():
     emp_id = request.form['emp_id']
-    first_name = request.form['first_name']
-    last_name = request.form['last_name']
-    pri_skill = request.form['pri_skill']
-    location = request.form['location']
+    emp_username = request.form['emp_username']
+    emp_name = request.form['emp_name']
+    gender = request.form['gender']
+    contact_num = request.form['contact_num']
+    emp_email = request.form['emp_email']
+    emp_password = request.form['emp_password']
 
-    update_sql = "UPDATE employee SET emp_id= %s , first_name= %s , last_name= %s , pri_skill= %s , location= %s WHERE emp_id= %s"
+    update_sql = "UPDATE employee SET emp_id= %s , emp_username= %s , emp_name= %s , gender= %s , contact_num= %s , emp_email= %s, emp_password= %s WHERE emp_id= %s"
     cursor = db_conn.cursor()
-    cursor.execute(update_sql, (emp_id, first_name, last_name, pri_skill, location, emp_id))
+    cursor.execute(update_sql, (emp_id, emp_username, emp_name, gender, contact_num, emp_email, emp_password, emp_id))
     db_conn.commit()
     cursor.close()
     return render_template('Home.html')
@@ -100,13 +105,15 @@ def ShowEmp():
     db_conn.commit()
     for i in cursor:
         getemp_id = i[0]
-        first_name = i[1]
-        last_name = i[2]
-        pri_skill = i[3]
-        location = i[4]
+        emp_username = i[1]
+        emp_name = i[2]
+        gender = i[3]
+        contact_num = i[4]
+        emp_email = i[4]
+        emp_password = i[4]
 
     cursor.close()
-    return render_template('GetEmpOutput.html', id=getemp_id, fname=first_name, lname=last_name, skill=pri_skill, location=location)
+    return render_template('GetEmpOutput.html', getemp_id=getemp_id, emp_username=emp_username, emp_name=emp_name, gender=gender, contact_num=contact_num, emp_email=emp_email, emp_password=emp_password)
 
 @app.route("/delete", methods=['POST'])
 def DelEmp():
