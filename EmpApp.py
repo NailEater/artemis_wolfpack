@@ -64,6 +64,7 @@ def AddEmp():
     contact_num = request.form['contact_num']
     emp_email = request.form['emp_email']
     emp_password = request.form['emp_password']
+    emp_image_file = request.files['emp_image_file']
 
     insert_sql = "INSERT INTO employee VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor = db_conn.cursor()
