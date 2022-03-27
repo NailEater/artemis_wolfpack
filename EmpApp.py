@@ -48,8 +48,8 @@ def edit():
         emp_name = i[2]
         gender = i[3]
         contact_num = i[4]
-        emp_email = i[4]
-        emp_password = i[4]
+        emp_email = i[5]
+        emp_password = i[6]
 
     cursor.close()
 
@@ -119,8 +119,8 @@ def ShowEmp():
         emp_name = i[2]
         gender = i[3]
         contact_num = i[4]
-        emp_email = i[4]
-        emp_password = i[4]
+        emp_email = i[5]
+        emp_password = i[6]
 
     cursor.close()
     return render_template('GetEmpOutput.html', emp_id=emp_id, emp_username=emp_username, emp_name=emp_name, gender=gender, contact_num=contact_num, emp_email=emp_email, emp_password=emp_password)
