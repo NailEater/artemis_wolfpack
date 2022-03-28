@@ -78,11 +78,16 @@ def AddEmp():
         s3.Bucket(custombucket).put_object(Key=emp_image_file_name_in_s3, Body=emp_image_file)
         bucket_location = boto3.client('s3').get_bucket_location(Bucket=custombucket)
         s3_location = (bucket_location['LocationConstraint'])
-        s3_location = '-' + s3_location
+        
+        if s3_location is None:
+                s3_location = ''
+        else:
+                s3_location = '-' + s3_location
+
         object_url = "https://s3{0}.amazonaws.com/{1}/{2}".format(
-        s3_location,
-        custombucket,
-        emp_image_file_name_in_s3)
+                s3_location,
+                custombucket,
+                emp_image_file_name_in_s3)
 
     finally:
         cursor.close()
@@ -99,7 +104,7 @@ def EditEmp():
     emp_email = request.form['emp_email']
     emp_password = request.form['emp_password']
 
-    update_sql = "UPDATE employee SET emp_id= %s , emp_username= %s , emp_name= %s , gender= %s , contact_num= %s , emp_email= %s, emp_password= %s WHERE emp_id= %s"
+    update_sql = "UPDATE employee SET emp_id= %s , emp_username= %s , emp_name= %s , gender= %s , contact_num= %s , emp_email= %s, emp_password= %s WHERE emp_id= %s"   
     cursor = db_conn.cursor()
     cursor.execute(update_sql, (emp_id, emp_username, emp_name, gender, contact_num, emp_email, emp_password, emp_id))
     db_conn.commit()
