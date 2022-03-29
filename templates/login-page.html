@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Classic Login Form Example</title>
+
+  
+  <link rel= "stylesheet" href= "https://fonts.googleapis.com/css?family=Assistant:400,700">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<section class='login' id='login'>
+  <div class='head'>
+  <h1 class='company'>
+    <img src="static/images/logo.png" height="250" />
+  </h1>
+  </div>
+  <p class='msg'>Welcome back</p>
+  <div class='form'>
+    <form method = "POST">
+  <input type="text" placeholder='Username' class='text' id='username' name='username' required><br>
+  <input type="password" placeholder='••••••••••••••' class='password' id='password' name='password'><br>
+  <button type="submit" style="text-align: center;" class='btn-login' id='do-login'>Login</button>
+    </form>
+  </div>
+</section>
+<footer>
+  
+</footer>
+<!-- partial -->
+  <!--script type="text/javascript">
+	var btnLogin = document.getElementById('do-login');
+	var idLogin = document.getElementById('login');
+	var username = document.getElementById('username');
+	
+	btnLogin.onclick = function(){
+		idLogin.innerHTML = '<p>We\'re happy to see you again, </p><h1>' +username.value+ '</h1>';
+	}
+  </script-->
+
+</body>
+</html>
