@@ -41,6 +41,10 @@ def checklogin():
         return render_template("Home.html", first_name=query1)
     else:
         return "Wrong User ID or Wrong password"
+    
+@app.route("/", methods = ['GET','POST'])
+def initial():
+    return render_template("Home.html")
 
 @app.route("/findPage", methods=['POST'])
 def find():
