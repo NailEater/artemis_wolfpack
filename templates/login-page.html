@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Classic Login Form Example</title>
+  <title>System Login</title>
 
   
   <link rel= "stylesheet" href= "https://fonts.googleapis.com/css?family=Assistant:400,700">
@@ -19,11 +19,16 @@
   </div>
   <p class='msg'>Welcome back</p>
   <div class='form'>
-    <form method = "POST">
-  <input type="text" placeholder='Username' class='text' id='username' name='username' required><br>
-  <input type="password" placeholder='••••••••••••••' class='password' id='password' name='password'><br>
-  <button type="submit" style="text-align: center;" class='btn-login' id='do-login'>Login</button>
+    <form method = "POST" action="/">
+      <input type="text" placeholder='User ID' class='text' id='username' name='username' required><br>
+      <input type="password" placeholder='••••••••••••••' class='password' id='password' name='password' required><br>
+      <input type="submit" style="text-align: center;" href="" class='btn-login' id='do-login' value="Login">
     </form>
+
+    {% if error %}
+      <p><strong>Error:</strong> {{ error }}
+    {% endif %}
+
   </div>
 </section>
 <footer>
