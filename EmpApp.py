@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g, redirect, session, url_for
 from pymysql import connections
+import sys
 import os
 import boto3
 from config import *
@@ -21,9 +22,82 @@ db_conn = connections.Connection(
 output = {}
 table = 'employee'
     
-@app.route("/", methods = ['GET','POST'])
-def initial():
-    return render_template("Home.html")
+class User:
+    def __init__(self, id, username, password):
+        self.id = id
+        self.username = username
+        self.password = password
+
+    def __repr__(self):
+        return f'<User: {self.username}>'
+
+query = "SELECT emp_id, emp_username, emp_password from employee"
+cursor = db_conn.cursor()
+
+cursor.execute(query)
+records = cursor.fetchall()
+
+users = []
+
+for row in records:
+    users.append(User(id=row[0], username=row[1], password=row[2]))
+
+
+app.secret_key = 'somesecretkeythatonlyishouldknow'
+
+@app.before_request
+def before_request():
+    g.user = None
+
+    if 'user_id' in session:
+        user = [x for x in users if x.id == session['user_id']][0]
+        g.user = user
+        
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        session.pop('user_id', None)
+
+        username = request.form['username']
+        password = request.form['password']
+        user = 0
+        
+        for x in users:
+            try:
+                if x.username == username:
+                    user = [x][0]
+            except:
+                error = 'Invalid username or password. Please try again!'
+                return render_template('login-page.html', error = error)
+
+        if user and user.password == password:
+            session['user_id'] = user.id
+            session['username'] = user.username
+            return redirect(url_for('profile'))
+
+        if user and user.password != password:
+            error = 'Invalid username or password. Please try again!'
+            return render_template('login-page.html', error = error)
+
+        error = 'Invalid username or password. Please try again!'
+        return render_template('login-page.html', error = error)
+
+    return render_template('login-page.html')
+
+@app.route('/home')
+def profile():
+    if not g.user:
+        return redirect(url_for('login'))
+
+    return render_template('Home.html',user=session['username'])
+
+@app.route('/dropsession')
+def dropsession():
+    session.pop('username', None)
+    session.pop('user_id', None)
+    g.user = None
+    return redirect('/')
 
 @app.route("/findPage", methods=['POST'])
 def find():
