@@ -20,27 +20,6 @@ db_conn = connections.Connection(
 
 output = {}
 table = 'employee'
-
-@app.route("/", methods = ['POST'])
-def checklogin():
-    UN = request.form['username']
-    PW = request.form['password']
-
-    #sqlconnection = sqlite3.Connection(currentlocation + "\Login.db")
-    cursor = db_conn.cursor()
-    query1 = "SELECT user_id, password from employee where user_id = {un} AND password = {pw}".format(un=UN, pw = PW)
-    query2 = "failed"
-    
-    rows = cursor.execute(query1)
-    #rows = rows.fetchall()
-    
-    test = 1
-    
-    #if len(rows) == 1:
-    if test == 1:
-        return render_template("Home.html", first_name=query1)
-    else:
-        return "Wrong User ID or Wrong password"
     
 @app.route("/", methods = ['GET','POST'])
 def initial():
