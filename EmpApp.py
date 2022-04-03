@@ -92,6 +92,10 @@ def profile():
 
     return render_template('Home.html',user=session['username'])
 
+@app.route("/home2", methods = ['GET','POST'])
+def initial():
+    return render_template("Home.html")
+
 @app.route('/dropsession')
 def dropsession():
     session.pop('username', None)
