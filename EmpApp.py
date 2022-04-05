@@ -215,5 +215,71 @@ def DelEmp():
     cursor.close()
     return render_template('Home.html')
 
+--------------------
+@app.route("/attendHome", methods=['POST'])
+def atthome():
+    return render_template('attendanceHome.html')
+
+@app.route("/addAttendanceData", methods=['POST'])
+def attadd():
+    return render_template('attendance.html')
+
+@app.route("/searchAttendanceData", methods=['POST'])
+def searchAttendanceData():                         
+    return render_template('GetEmp.html')
+
+@app.route("/addAttend", methods=['POST'])
+def addAttend():
+    attendance_ID = request.form['attendance_ID']  
+    emp_ID = request.form['emp_ID']
+    attendance_date = request.form['attendance_date']
+    attendance_status = request.form['attendance_status']
+    
+    
+
+    insert_sql = "INSERT INTO attendance (attendance_ID, emp_ID, attendance_date, attendance_status) VALUES (%s, %s, %s, %s)"
+    cursor = db_conn.cursor()
+
+
+    try:
+
+        cursor.execute(insert_sql, (attendance_ID, emp_ID, attendance_date, attendance_status))
+        db_conn.commit()
+        
+    finally:
+        cursor.close()
+
+    print("all modification done...")
+    return render_template('GetEmp.html')
+    
+  
+@app.route("/fetchdata",methods=['POST'])
+def fetchdata():
+    cursor = db_conn.cursor()
+    cursor.execute("SELECT * FROM attendance")
+    i = cursor.fetchall()
+    return render_template('GetAllAttendance.html', data=i) 
+
+
+@app.route("/showData", methods=['POST'])
+def showData():
+
+    attendance_ID = request.form['attendance_ID']
+    select_employee_query = "SELECT attendance_ID, emp_ID, attendance_date, attendance_status FROM attendance WHERE attendance_ID = %s"
+    cursor = db_conn.cursor()
+    
+    cursor.execute(select_employee_query,(attendance_ID))
+    db_conn.commit()
+    
+    for i in cursor:
+       attendance_ID = i[0]
+       emp_ID = i[1]
+       attendance_date = i[2]
+       attendance_status = i[3]
+       
+    cursor.close()   
+    return render_template('GetEmpOutput.html', attendance_ID=attendance_ID, emp_ID=emp_ID, attendance_date=attendance_date, attendance_status=attendance_status)
+
+-------------
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
