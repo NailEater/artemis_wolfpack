@@ -254,7 +254,7 @@ def addAttend():
 @app.route("/fetchattdata",methods=['POST'])
 def fetchattdata():
     cursor = db_conn.cursor()
-    cursor.execute("SELECT * FROM attendance")
+    cursor.execute("SELECT attendance_ID, emp_ID, attendance_date, attendance_status FROM attendance")
     i = cursor.fetchall()
     return render_template('GetAllAttendance.html', data=i) 
 
