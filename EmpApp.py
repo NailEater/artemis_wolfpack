@@ -215,7 +215,6 @@ def DelEmp():
     cursor.close()
     return render_template('Home.html')
 
---------------------
 @app.route("/attendHome", methods=['POST'])
 def atthome():
     return render_template('attendanceHome.html')
@@ -226,7 +225,7 @@ def attadd():
 
 @app.route("/searchAttendanceData", methods=['POST'])
 def searchAttendanceData():                         
-    return render_template('GetEmp.html')
+    return render_template('GetAttEmp.html')
 
 @app.route("/addAttend", methods=['POST'])
 def addAttend():
@@ -250,7 +249,7 @@ def addAttend():
         cursor.close()
 
     print("all modification done...")
-    return render_template('GetEmp.html')
+    return render_template('GetAttEmp.html')
     
   
 @app.route("/fetchattdata",methods=['POST'])
@@ -278,8 +277,7 @@ def showData():
        attendance_status = i[3]
        
     cursor.close()   
-    return render_template('GetEmpOutput.html', attendance_ID=attendance_ID, emp_ID=emp_ID, attendance_date=attendance_date, attendance_status=attendance_status)
+    return render_template('GetAttEmpOutput.html', attendance_ID=attendance_ID, emp_ID=emp_ID, attendance_date=attendance_date, attendance_status=attendance_status)
 
--------------
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80, debug=True)
