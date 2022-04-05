@@ -215,7 +215,7 @@ def DelEmp():
     cursor.close()
     return render_template('Home.html')
 
-@app.route("/attendHome", methods=['POST'])
+@app.route("/attendHome", methods=['GET', 'POST'])
 def atthome():
     return render_template('attendanceHome.html')
 
