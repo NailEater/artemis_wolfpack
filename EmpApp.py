@@ -253,8 +253,8 @@ def addAttend():
     return render_template('GetEmp.html')
     
   
-@app.route("/fetchdata",methods=['POST'])
-def fetchdata():
+@app.route("/fetchattdata",methods=['POST'])
+def fetchattdata():
     cursor = db_conn.cursor()
     cursor.execute("SELECT * FROM attendance")
     i = cursor.fetchall()
